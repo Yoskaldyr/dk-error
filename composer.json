@@ -1,0 +1,36 @@
+{
+  "name": "n3vrax/dk-error",
+  "type": "library",
+  "description": "Base for middleware http errors",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "n3vrax",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5 || ^7.0",
+    "psr/http-message": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "squizlabs/php_codesniffer": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "N3vrax\\DkError\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "N3vraxTest\\DkError\\": "test/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

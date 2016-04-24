@@ -11,7 +11,7 @@ namespace N3vrax\DkError;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class AbstractErrorHandler
+abstract class AbstractErrorHandler
 {
     protected $responseStrategy;
 

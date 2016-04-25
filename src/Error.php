@@ -37,6 +37,11 @@ class Error
         return $this->code;
     }
 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
     public function getMessage()
     {
         return $this->message;

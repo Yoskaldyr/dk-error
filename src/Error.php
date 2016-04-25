@@ -12,6 +12,8 @@ class Error
 {
     protected $code;
 
+    protected $title;
+
     protected $message;
 
     protected $extra;
@@ -19,10 +21,11 @@ class Error
     /**
      * Error constructor.
      * @param int $code
+     * @param string $title
      * @param string $message
      * @param mixed $extra
      */
-    public function __construct($code, $message = null, $extra = null)
+    public function __construct($code, $title = null, $message = null, $extra = null)
     {
         $this->code = (int)$code;
         $this->message = $message;

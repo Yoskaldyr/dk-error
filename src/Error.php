@@ -14,6 +14,8 @@ class Error
 
     protected $title;
 
+    protected $type;
+
     protected $message;
 
     protected $extra;
@@ -21,11 +23,12 @@ class Error
     /**
      * Error constructor.
      * @param int $code
-     * @param string $title
-     * @param string $message
-     * @param mixed $extra
+     * @param string|null $title
+     * @param string|null $type
+     * @param string|null $message
+     * @param mixed|null $extra
      */
-    public function __construct($code, $title = null, $message = null, $extra = null)
+    public function __construct($code, $title = null, $type = null, $message = null, $extra = null)
     {
         $this->code = (int)$code;
         $this->message = $message;
@@ -40,6 +43,11 @@ class Error
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 
     public function getMessage()

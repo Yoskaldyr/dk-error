@@ -13,6 +13,12 @@ use Psr\Http\Message\ServerRequestInterface;
 
 interface ErrorResponseStrategy
 {
+    /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param Error $error
+     * @return ResponseInterface
+     */
     public function createResponse(
         ServerRequestInterface $request,
         ResponseInterface $response,

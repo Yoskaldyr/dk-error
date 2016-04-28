@@ -10,14 +10,29 @@ namespace N3vrax\DkError;
 
 class Error
 {
+    /**
+     * @var int
+     */
     protected $code;
 
+    /**
+     * @var null|string
+     */
     protected $title;
 
+    /**
+     * @var null|string
+     */
     protected $type;
 
+    /**
+     * @var null|string
+     */
     protected $message;
 
+    /**
+     * @var mixed|null
+     */
     protected $extra;
 
     /**
@@ -31,6 +46,8 @@ class Error
     public function __construct($code, $title = null, $type = null, $message = null, $extra = null)
     {
         $this->code = (int)$code;
+        $this->title = $title;
+        $this->type = $type;
         $this->message = $message;
         $this->extra = $extra;
     }

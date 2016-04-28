@@ -32,14 +32,15 @@ abstract class AbstractErrorHandler
                 return $next($request, $response, $error);
             }
         }
+        else {
 
-        $errorResponse = $this->responseStrategy->createResponse($request, $response, $error);
-        if(!$errorResponse instanceof ResponseInterface)
-        {
-            throw new \RuntimeException(
-                sprintf('ErrorResponseStrategy must return an instance of %s', ResponseInterface::class));
+            $errorResponse = $this->responseStrategy->createResponse($request, $response, $error);
+            if (!$errorResponse instanceof ResponseInterface) {
+                throw new \RuntimeException(
+                    sprintf('ErrorResponseStrategy must return an instance of %s', ResponseInterface::class));
+            }
+
+            return $errorResponse;
         }
-
-        return $errorResponse;
     }
 }

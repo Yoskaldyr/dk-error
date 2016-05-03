@@ -15,7 +15,7 @@ abstract class AbstractErrorHandler
 {
     protected $responseStrategy;
 
-    public function __construct(ErrorResponseStrategy $responseStrategy)
+    public function __construct(ErrorResponseStrategy $responseStrategy = null)
     {
         $this->responseStrategy = $responseStrategy;
     }
@@ -34,11 +34,22 @@ abstract class AbstractErrorHandler
             return $response;
         }
         else {
+            $errorResponse = null;
+            if($this->responseStrategy) {
+                $errorResponse = $this->responseStrategy->createResponse($request, $response, $error);
+            }
 
-            $errorResponse = $this->responseStrategy->createResponse($request, $response, $error);
-            if (!$errorResponse instanceof ResponseInterface) {
+            if ($errorResponse && !$errorResponse instanceof ResponseInterface) {
                 throw new \RuntimeException(
-                    sprintf('ErrorResponseStrategy must return an instance of %s', ResponseInterface::class));
+                    sprintf('ErrorResponseStrategy must return an instance of %s or null if you want to skip',
+                        ResponseInterface::class));
+            }
+
+            if(!$errorResponse) {
+                if($next) {
+                    return $next($request, $response->withStatus($error->getCode()), $error);
+                }
+                return $response->withStatus($error->getCode());
             }
 
             return $errorResponse;

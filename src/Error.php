@@ -42,10 +42,16 @@ class Error
      * @param string|null $type
      * @param string|null $message
      * @param mixed|null $extra
+     * @throws \Exception
      */
     public function __construct($code, $title = null, $type = null, $message = null, $extra = null)
     {
         $this->code = (int)$code;
+
+        if($this->code < 100 || $this->code > 599) {
+            throw new \Exception(sprintf("Error code %d is not a valid HTTP status code", $this->code));
+        }
+
         $this->title = $title;
         $this->type = $type;
         $this->message = $message;

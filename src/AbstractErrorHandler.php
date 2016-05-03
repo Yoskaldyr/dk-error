@@ -31,6 +31,7 @@ abstract class AbstractErrorHandler
             if($next) {
                 return $next($request, $response, $error);
             }
+            return $response;
         }
         else {
 

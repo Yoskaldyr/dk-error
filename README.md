@@ -5,6 +5,21 @@ It contains a general `Error` class, an `AbstractErrorHandler` class, to be put 
 
 This package is used mainly in the dk-{package} libraries, it can be optionaly used in a specific project, or you could write your own error handlers.
 
+### Installation
+```bash
+$ composer require n3vrax/dk-error
+```
+
+Until we register the library with packagist, you must insert the repository url in composer.json
+```
+"repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/n3vrax/dk-error"
+    }
+  ],
+```
+
 ### Usage
 The following steps can be used in order to integrate this package into your project, or use it in your libraries
 * Extend the abstract class `AbstractErrorHandler`. Here, you could leave it empty, and just call `parent::__invoke`. This class must be injected with a ErrorResponseStrategy, so you should also create a factory class, if used through a DI container.

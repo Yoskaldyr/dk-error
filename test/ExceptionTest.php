@@ -8,7 +8,7 @@
 
 namespace N3vraxTest\DkError;
 
-class ErrorTest extends \PHPUnit_Framework_TestCase
+class ExceptionTest extends \PHPUnit_Framework_TestCase
 {
     public function testSomething()
     {
